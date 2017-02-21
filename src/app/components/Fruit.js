@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 
 class Fruit extends Component {
   render() {
@@ -7,13 +7,10 @@ class Fruit extends Component {
     return (
       <div>
         <h1>Hi there from fruits</h1>
-        You selected a {this.props.location.query.selectedFruit}
+        You selected a {this.props.params.fruit}
       </div>
     );
   }
 }
 
-Fruit.PropTypes = {
-  selectedFruit: PropTypes.string.isRequired
-};
 export default Fruit;

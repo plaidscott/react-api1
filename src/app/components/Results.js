@@ -62,8 +62,8 @@ class Results extends Component {
               <option>Pineapples</option>
             </select>
             <span className="input-btn-group">
-              <Link activeClassName="navlink-active" to={{pathname: '/fruit', query: {selectedFruit: this.state.selectedFruit}}}>
-                <h3>View Selected Fruit</h3>
+              <Link activeClassName="navlink-active" to={`/fruit/${this.state.selectedFruit}`}>
+                {this.state.selectedFruit}
               </Link>
             </span>
           </div>
