@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import {Link} from 'react-router';
 
 import translationHelper from '../utils/yodaHelpers';
 
@@ -31,6 +32,12 @@ class Results extends Component {
   handleFruitSelect(event) {
     this.setState({selectedFruit: event.target.value});
   }
+
+  handleFruitSelectClick(e) {
+    e.preventDefault();
+    console.log(this);
+  }
+
   render() {
     return (
       <div>
@@ -55,7 +62,9 @@ class Results extends Component {
               <option>Pineapples</option>
             </select>
             <span className="input-btn-group">
-              <button className="btn btn-primary" onClick={this.handleFruitSelectClick}>Veiw Selected Fruit!</button>
+              <Link activeClassName="navlink-active" to={{pathname: '/fruit', query: {selectedFruit: this.state.selectedFruit}}}>
+                <h3>View Selected Fruit</h3>
+              </Link>
             </span>
           </div>
         </div>
