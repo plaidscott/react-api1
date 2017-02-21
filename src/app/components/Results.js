@@ -7,10 +7,13 @@ class Results extends Component {
     super(props);
     this.state = {
       inputToTranslate: '',
-      translatedInput: ''
+      translatedInput: '',
+      selectedFruit: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleInputToTranslate = this.handleInputToTranslate.bind(this);
+    this.handleFruitSelect = this.handleFruitSelect.bind(this);
+    this.handleFruitSelectClick = this.handleFruitSelectClick.bind(this);
   }
 
   handleChange(event) {
@@ -24,9 +27,13 @@ class Results extends Component {
         this.setState({translatedInput: response.data});
       });
   }
+
+  handleFruitSelect(event) {
+    this.setState({selectedFruit: event.target.value});
+  }
   render() {
     return (
-      <div className="container">
+      <div>
         <div className="jumbotron">
           <h3>Speak Like Yoda Here</h3>
           <div className="input-group">
@@ -35,11 +42,21 @@ class Results extends Component {
             </span>
             <input className="form-control" placeholder="Yoda Translation here" name="inputToTranslate" onChange={this.handleChange}></input>
           </div>
+          <h3>{this.state.inputToTranslate}</h3>
+          <h3>{this.state.translatedInput}</h3>
         </div>
-        <div className="container">
-          <div className="jumbotron">
-            <h3>{this.state.inputToTranslate}</h3>
-            <h3>{this.state.translatedInput}</h3>
+        <div className="jumbotron">
+          <h3>Choose some cool stuff</h3>
+          <div className="input-group">
+            <select className="form-control" onChange={this.handleFruitSelect}>
+              <option>Apples</option>
+              <option>Oranges</option>
+              <option>Bananas</option>
+              <option>Pineapples</option>
+            </select>
+            <span className="input-btn-group">
+              <button className="btn btn-primary" onClick={this.handleFruitSelectClick}>Veiw Selected Fruit!</button>
+            </span>
           </div>
         </div>
       </div>
